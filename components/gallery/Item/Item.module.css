@@ -55,7 +55,7 @@ $focused-outline-color: #4c9ffe;
   display: flex;
   flex-grow: 1;
   align-items: center;
-  padding: 18px 20px;
+  /* padding: 18px 20px; */
   background-color: $background-color;
   box-shadow: $box-shadow;
   outline: none;
@@ -74,7 +74,7 @@ $focused-outline-color: #4c9ffe;
   transform: scale(var(--scale, 1));
   transition: box-shadow 200ms cubic-bezier(0.18, 0.67, 0.6, 1.22);
 
-  /* &:focus-visible {
+  /* :focus-visible {
     box-shadow: 0 0px 4px 1px $focused-outline-color, $box-shadow;
   } */
 

@@ -1,0 +1,58 @@
+export const masterItems = [
+    {
+      id: 1,
+      name: "one",
+      image: "/images/image-1.webp",
+    },
+    {
+      id: 2,
+      name: "two",
+      image: "/images/image-2.webp",
+    },
+    {
+      id: 3,
+      name: "three",
+      image: "/images/image-3.webp",
+    },
+    {
+      id: 4,
+      name: "four",
+      image: "/images/image-4.webp",
+    },
+    {
+      id: 5,
+      name: "five",
+      image: "/images/image-5.webp",
+    },
+    {
+      id: 6,
+      name: "six",
+      image: "/images/image-6.webp",
+    },
+    {
+      id: 7,
+      name: "seven",
+      image: "/images/image-7.webp",
+    },
+    {
+      id: 8,
+      name: "eight",
+      image: "/images/image-8.webp",
+    },
+    {
+      id: 9,
+      name: "nine",
+      image: "/images/image-9.webp",
+    },
+    {
+      id: 10,
+      name: "ten",
+      image: "/images/image-10.jpeg",
+    },
+    {
+      id: 11,
+      name: "eleven",
+      image: "/images/image-11.jpeg",
+    },
+  ];
+  

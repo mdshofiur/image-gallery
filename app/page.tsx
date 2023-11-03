@@ -1,5 +1,5 @@
 import React from "react";
-import { LargeFirstTile } from "@/components/gallery/MainFile";
+import  LargeFirstTile  from "@/components/gallery";
 
 const Page = () => {
   return (
