@@ -1,10 +1,10 @@
 import React from "react";
-import  LargeFirstTile  from "@/components/gallery";
+import ProductsShowcase from "@/components/products-showcase";
 
 const Page = () => {
   return (
     <main className="container mx-auto min-h-screen py-10">
-      <LargeFirstTile />
+      <ProductsShowcase />
     </main>
   );
 };

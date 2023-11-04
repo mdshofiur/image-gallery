@@ -106,3 +106,21 @@ export interface SortableItemProps {
   renderItem?(args: any): React.ReactElement;
   wrapperStyle: Props["wrapperStyle"];
 }
+
+
+export interface GridContainerProps {
+  children: React.ReactNode;
+  columns: number;
+}
+
+export interface WrapperProps {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}
+
+export interface ListProps {
+  children: React.ReactNode;
+  columns?: number;
+  style?: React.CSSProperties;
+  horizontal?: boolean;
+}

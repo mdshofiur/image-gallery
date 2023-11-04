@@ -15,7 +15,6 @@ import {
 import {
   arrayMove,
   SortableContext,
-  sortableKeyboardCoordinates,
   rectSortingStrategy,
 } from "@dnd-kit/sortable";
 import { List } from "../List";
@@ -32,7 +31,6 @@ export default function Sortable({
   adjustScale = false,
   Container = List,
   collisionDetection = closestCenter,
-  coordinateGetter = sortableKeyboardCoordinates,
   dropAnimation = dropAnimationConfig,
   getItemStyles = () => ({}),
   getNewIndex,
@@ -64,20 +62,9 @@ export default function Sortable({
     useSensor(TouchSensor, {
       activationConstraint,
     })
-    // useSensor(KeyboardSensor, {
-    //   // Disable smooth scrolling in Cypress automated tests
-    //   scrollBehavior: 'Cypress' in window ? 'auto' : undefined,
-    //   coordinateGetter,
-    // })
   );
 
   const isFirstAnnouncement = useRef(true);
-
-  // const getIndex = (id: UniqueIdentifier) => items.indexOf(id);
-
-  // const getPosition = (id: UniqueIdentifier) => getIndex(id) + 1;
-
-  // const activeIndex = activeId ? getIndex(activeId) : -1;
 
   const getIndex = (id: UniqueIdentifier) => {
     const foundItem = items.find((item: any) => item.id === id);
@@ -167,7 +154,7 @@ export default function Sortable({
       measuring={measuring}
       modifiers={modifiers}
     >
-      <Wrapper style={style} center>
+      <Wrapper style={style}>
         <SortableContext items={items} strategy={strategy}>
           <Container>
             {items.map((value, index) => (

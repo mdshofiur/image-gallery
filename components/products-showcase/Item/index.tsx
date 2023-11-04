@@ -2,8 +2,6 @@
 import React, { useEffect } from "react";
 import classNames from "classnames";
 import styles from "./Item.module.css";
-import { Remove } from "../action/Remove";
-import { Handle } from "../action/Handle";
 import Image from "next/image";
 import { ItemProps } from "../types";
 
@@ -92,16 +90,14 @@ const Item = React.memo(
           ref={ref}
         >
           <div
-            className={classNames(
-              styles.Item,
+            className={`relative flex grow ${classNames(
               dragging && styles.dragging,
               handle && styles.withHandle,
               dragOverlay && styles.dragOverlay,
               disabled && styles.disabled,
               color && styles.color
-            )}
+            )}`}
             style={style}
-            // data-cypress="draggable-item"
             {...(!handle ? listeners : undefined)}
             {...props}
             tabIndex={!handle ? 0 : undefined}
@@ -115,12 +111,6 @@ const Item = React.memo(
                 height={500}
               />
             </div>
-            <span className={styles.Actions}>
-              {onRemove ? (
-                <Remove className={styles.Remove} onClick={onRemove} />
-              ) : null}
-              {handle ? <Handle {...handleProps} {...listeners} /> : null}
-            </span>
           </div>
         </li>
       );
