@@ -2,10 +2,10 @@
 import {
   useSortable
 } from "@dnd-kit/sortable";
-import Item from "../Item";
+import Item from "../item";
 import {SortableItemProps } from "../types";
 
-export function SortableItem({
+export default function SortableItem({
   disabled,
   animateLayoutChanges,
   getNewIndex,

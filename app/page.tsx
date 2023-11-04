@@ -1,5 +1,5 @@
 import React from "react";
-import ProductsShowcase from "@/components/products-showcase";
+import ProductsShowcase from "@/components/products-gallery";
 
 const Page = () => {
   return (

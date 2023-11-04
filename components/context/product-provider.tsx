@@ -1,24 +1,17 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import productsData from "../products-showcase/data/products.json";
+import productsData from "../products-gallery/data/products.json";
+import {
+  ProductContextType,
+  Product,
+  ProductProviderProps,
+} from "../products-gallery/types";
 
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-}
-
-interface ProductContextType {
-  products: Product[];
-  deleteProduct: (productId: number) => void;
-  selectedCheckboxes: number[];
-  toggleCheckbox: (productId: number) => void;
-  handleDeleteSelected: () => void;
-}
-
+// Create a context to manage products and selected checkboxes
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
+// Custom hook to access the ProductContext
 export const useProductContext = () => {
   const context = useContext(ProductContext);
   if (!context) {
@@ -27,22 +20,26 @@ export const useProductContext = () => {
   return context;
 };
 
-interface ProductProviderProps {
-  children: ReactNode;
-}
-
+// ProductProvider component to manage product data and checkboxes
 export const ProductProvider: React.FC<ProductProviderProps> = ({
   children,
 }) => {
+
+
+  // State to store the list of products
   const [products, setProducts] = useState<Product[]>(productsData);
+
+  // State to keep track of selected checkboxes
   const [selectedCheckboxes, setSelectedCheckboxes] = useState<number[]>([]);
 
+  // Function to delete a product by its ID
   const deleteProduct = (productId: number) => {
     setProducts((prevProducts) =>
       prevProducts.filter((product) => product.id !== productId)
     );
   };
 
+  // Function to toggle the selection of a checkbox
   const toggleCheckbox = (productId: number) => {
     if (selectedCheckboxes.includes(productId)) {
       setSelectedCheckboxes(
@@ -53,6 +50,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
     }
   };
 
+  // Function to delete all selected products
   const handleDeleteSelected = () => {
     selectedCheckboxes.forEach((productId) => {
       deleteProduct(productId);
@@ -60,6 +58,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
     setSelectedCheckboxes([]);
   };
 
+  // Provide the product data and related functions through the context
   return (
     <ProductContext.Provider
       value={{

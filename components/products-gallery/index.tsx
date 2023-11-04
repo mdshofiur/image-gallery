@@ -1,10 +1,11 @@
 "use client";
-import React, {Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { rectSortingStrategy } from "@dnd-kit/sortable";
-import Sortable from "./Sortable";
-import { GridContainer } from "./Grid/GridContainer";
+import Sortable from "./sortable";
+import { GridContainer } from "./grid/GridContainer";
 import { Props as SortableProps } from "./types";
 import { useProductContext } from "../context/product-provider";
+
 
 const props: Partial<SortableProps> = {
   adjustScale: true,
@@ -16,6 +17,11 @@ const props: Partial<SortableProps> = {
 export default function ProductsShowcase() {
   const { products, handleDeleteSelected } = useProductContext();
 
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   return (
     <Fragment>
@@ -30,30 +36,32 @@ export default function ProductsShowcase() {
         </button>
       </section>
       {/* Sortable  */}
-      <Sortable
-        {...props}
-        dataItems={products}
-        getItemStyles={({ index }) => {
-          if (index === 0) {
+      {isClient  ? (
+        <Sortable
+          {...props}
+          dataItems={products}
+          getItemStyles={({ index }) => {
+            if (index === 0) {
+              return {
+                fontSize: "2rem",
+              };
+            }
+            return {};
+          }}
+          wrapperStyle={({ index }) => {
+            if (index === 0) {
+              return {
+                gridRowStart: "span 2",
+                gridColumnStart: "span 2",
+              };
+            }
             return {
-              fontSize: "2rem",
+              width: "100%",
+              height: "100%",
             };
-          }
-          return {};
-        }}
-        wrapperStyle={({ index }) => {
-          if (index === 0) {
-            return {
-              gridRowStart: "span 2",
-              gridColumnStart: "span 2",
-            };
-          }
-          return {
-            width: "100%",
-            height: "100%",
-          };
-        }}
-      />
+          }}
+        />
+      ) : null}
     </Fragment>
   );
 }

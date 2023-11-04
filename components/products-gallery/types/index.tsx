@@ -1,3 +1,4 @@
+import React, {ReactNode } from "react";
 import {
   Active,
   CollisionDetection,
@@ -17,19 +18,18 @@ import {
 } from "@dnd-kit/sortable";
 import type { Transform } from "@dnd-kit/utilities";
 
-
+// Props for the sortable list container component
 export interface Props {
   activationConstraint?: PointerActivationConstraint;
   animateLayoutChanges?: AnimateLayoutChanges;
   adjustScale?: boolean;
   collisionDetection?: CollisionDetection;
   coordinateGetter?: KeyboardCoordinateGetter;
-  Container?: any; // To-do: Fix me
+  Container?: any; // To-do: Fix me - Note: This property is marked as "To-do: Fix me," and may need further clarification or modification.
   dropAnimation?: DropAnimation | null;
   getNewIndex?: NewIndexGetter;
   handle?: boolean;
   itemCount?: number;
-  // items?: UniqueIdentifier[];
   dataItems?: any;
   measuring?: MeasuringConfiguration;
   modifiers?: Modifiers;
@@ -56,7 +56,7 @@ export interface Props {
   isDisabled?(id: UniqueIdentifier): boolean;
 }
 
-
+// Props for individual items within the sortable list
 export interface ItemProps {
   dragOverlay?: boolean;
   color?: string;
@@ -73,7 +73,6 @@ export interface ItemProps {
   style?: React.CSSProperties;
   transition?: string | null;
   wrapperStyle?: React.CSSProperties;
-  // value: React.ReactNode;
   value: any;
   onRemove?(): void;
   renderItem?(args: {
@@ -91,12 +90,11 @@ export interface ItemProps {
   }): React.ReactElement;
 }
 
-
+// Props for individual sortable items
 export interface SortableItemProps {
   animateLayoutChanges?: AnimateLayoutChanges;
   disabled?: boolean;
   getNewIndex?: NewIndexGetter;
-  // id: UniqueIdentifier;
   id: any;
   index: number;
   handle: boolean;
@@ -107,20 +105,47 @@ export interface SortableItemProps {
   wrapperStyle: Props["wrapperStyle"];
 }
 
-
+// Props for a grid container component
 export interface GridContainerProps {
   children: React.ReactNode;
   columns: number;
 }
 
+// Props for a wrapper component
 export interface WrapperProps {
   children: React.ReactNode;
   style?: React.CSSProperties;
 }
 
+// Props for a list container component
 export interface ListProps {
   children: React.ReactNode;
   columns?: number;
   style?: React.CSSProperties;
   horizontal?: boolean;
 }
+
+
+// Props for the ProductProvider component
+export interface ProductProviderProps {
+  children: ReactNode;
+}
+
+
+// Represents a product with an ID, name, and image
+export interface Product {
+  id: number;
+  name: string;
+  image: string;
+}
+
+// Context for managing a list of products and selected checkboxes
+export interface ProductContextType {
+  products: Product[];
+  deleteProduct: (productId: number) => void;
+  selectedCheckboxes: number[];
+  toggleCheckbox: (productId: number) => void;
+  handleDeleteSelected: () => void;
+}
+
+

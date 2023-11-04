@@ -4,7 +4,7 @@ import { GridContainerProps } from '../types';
 
 export function GridContainer({children, columns}: GridContainerProps) {
   return (
-    <ul
+    <div
       className={styles.GridContainer}
       style={
         {
@@ -13,6 +13,6 @@ export function GridContainer({children, columns}: GridContainerProps) {
       }
     >
       {children}
-    </ul>
+    </div>
   );
 }

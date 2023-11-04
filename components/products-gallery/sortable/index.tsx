@@ -17,12 +17,13 @@ import {
   SortableContext,
   rectSortingStrategy,
 } from "@dnd-kit/sortable";
-import { List } from "../List";
-import { Wrapper } from "../Wrapper";
-import Item from "../Item";
-import { SortableItem } from "../SortableItem";
+import { List } from "../list";
+import { Wrapper } from "../wrapper";
+import Item from "../item";
+import  SortableItem  from "../sortable-item";
 import { Props } from "../types";
 import { dropAnimationConfig, screenReaderInstructions } from "../others";
+
 
 export default function Sortable({
   animateLayoutChanges,
@@ -33,7 +34,6 @@ export default function Sortable({
   getItemStyles = () => ({}),
   getNewIndex,
   handle = false,
-  itemCount = 10,
   dataItems: initialItems,
   isDisabled = () => false,
   measuring,

@@ -7,7 +7,7 @@ import { ItemProps } from "../types";
 import { useProductContext } from "@/components/context/product-provider";
 
 const Item = React.memo(
-  React.forwardRef<HTMLLIElement, ItemProps>(
+  React.forwardRef<HTMLDivElement, ItemProps>(
     (
       {
         color,
@@ -62,7 +62,7 @@ const Item = React.memo(
           value,
         })
       ) : (
-        <li
+        <div
           className={classNames(
             styles.Wrapper,
             fadeIn && styles.fadeIn,
@@ -131,7 +131,7 @@ const Item = React.memo(
               )}
             </div>
           </div>
-        </li>
+        </div>
       );
     }
   )
