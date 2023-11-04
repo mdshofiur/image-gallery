@@ -48,12 +48,6 @@ const Item = React.memo(
       //  Product Context
       const { selectedCheckboxes, toggleCheckbox } = useProductContext();
 
-      // console.log("🚀 selectedCheckboxes:", selectedCheckboxes)
-
-      if (selectedCheckboxes.includes(value.id)) {
-        console.log("🚀 value:", value);
-      }
-
       return renderItem ? (
         renderItem({
           dragOverlay: Boolean(dragOverlay),
