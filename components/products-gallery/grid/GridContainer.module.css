@@ -1,11 +1,11 @@
 .GridContainer {
   display: grid;
   grid-template-columns: repeat(var(--col-count), 1fr);
-  grid-gap: 25px;
+  grid-gap: 20px;
 
   @media (max-width: 850px) {
     grid-template-columns: repeat(calc(var(--col-count) - 1), 1fr);
-    grid-gap: 20px;
+    grid-gap: 16px;
   }
 
   @media (max-width: 650px) {

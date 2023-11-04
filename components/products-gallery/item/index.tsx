@@ -95,7 +95,7 @@ const Item = React.memo(
           ref={ref}
         >
           <div
-            className={`relative flex grow ${classNames(
+            className={`w-full h-full relative flex grow ${classNames(
               dragging && styles.dragging,
               handle && styles.withHandle,
               dragOverlay && styles.dragOverlay,
@@ -108,24 +108,21 @@ const Item = React.memo(
             tabIndex={!handle ? 0 : undefined}
           >
             {/* Product Card Here */}
-            <div className="w-full h-full border border-red-500 bg-white rounded-md relative group">
+            <div className="w-full h-full relative group bg-white border border-gray-500 rounded-xl">
               <Image
                 src={`${value?.image}`}
                 alt={`${value?.name} Image`}
                 width={200}
                 height={200}
                 priority={true}
-                unoptimized={true}
-                className="w-full h-full object-cover object-center rounded-md"
+                className="w-full h-full object-cover object-center rounded-xl"
               />
 
               {/* Card Overlay for checkbox */}
               {!dragging && !dragOverlay && (
                 <div
-                  className={`absolute left-0 right-0 top-0
-                  bottom-0  
-                  group-hover:visible group-hover:opacity-100 
-                  transition-opacity duration-500 ease-in-out
+                  className={`absolute left-0 right-0 top-0 bottom-0 group-hover:visible  
+                  group-hover:opacity-100 transition-opacity rounded-xl duration-500 ease-in-out 
                    ${
                      selectedCheckboxes.includes(value.id)
                        ? "bg-custom visible opacity-100"
