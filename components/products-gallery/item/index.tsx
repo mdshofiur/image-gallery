@@ -131,7 +131,7 @@ const Item = React.memo(
                 >
                   <input
                     type="checkbox"
-                    className="w-5 h-5 ml-5 mt-5"
+                    className="w-3 md:w-5 h-3 md:h-5 ml-3 md:ml-5 mt-3 md:mt-5"
                     checked={selectedCheckboxes.includes(value.id)}
                     onChange={() => toggleCheckbox(value.id)}
                   />
