@@ -32,6 +32,7 @@ const Item = React.memo(
       },
       ref
     ) => {
+      // Drag Overlay Effect
       useEffect(() => {
         if (!dragOverlay) {
           return;
@@ -46,6 +47,12 @@ const Item = React.memo(
 
       //  Product Context
       const { selectedCheckboxes, toggleCheckbox } = useProductContext();
+
+      // console.log("🚀 selectedCheckboxes:", selectedCheckboxes)
+
+      if (selectedCheckboxes.includes(value.id)) {
+        console.log("🚀 value:", value);
+      }
 
       return renderItem ? (
         renderItem({
@@ -106,6 +113,7 @@ const Item = React.memo(
             {...props}
             tabIndex={!handle ? 0 : undefined}
           >
+            {/* Product Card Here */}
             <div className="w-full h-full border border-red-500 bg-white rounded-md relative group">
               <Image
                 src={`${value?.image}`}
@@ -116,12 +124,19 @@ const Item = React.memo(
                 unoptimized={true}
                 className="w-full h-full object-cover object-center rounded-md"
               />
+
+              {/* Card Overlay for checkbox */}
               {!dragging && !dragOverlay && (
                 <div
                   className={`absolute left-0 right-0 top-0
-                  bottom-0 invisible bg-custom opacity-0
+                  bottom-0  
                   group-hover:visible group-hover:opacity-100 
-                  transition-opacity duration-500 ease-in-out `}
+                  transition-opacity duration-500 ease-in-out
+                   ${
+                     selectedCheckboxes.includes(value.id)
+                       ? "bg-custom visible opacity-100"
+                       : "bg-custom invisible opacity-0"
+                   }`}
                 >
                   <input
                     type="checkbox"

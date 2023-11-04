@@ -15,7 +15,6 @@ const props: Partial<SortableProps> = {
 };
 
 export default function ProductsShowcase() {
-
   //  Product Context
   const { products, handleDeleteSelected, selectedCheckboxes } =
     useProductContext();
@@ -30,7 +29,7 @@ export default function ProductsShowcase() {
 
   return (
     <Fragment>
-      {/* Header here */}
+      {/* Page head here */}
       <section className="flex items-center justify-between pb-10">
         <h3 className="text-2xl font-bold capitalize">
           {selectedCheckboxes.length > 0

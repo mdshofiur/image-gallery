@@ -1,8 +1,6 @@
-import {
-  useSortable
-} from "@dnd-kit/sortable";
+import { useSortable } from "@dnd-kit/sortable";
 import Item from "../item";
-import {SortableItemProps } from "../types";
+import { SortableItemProps } from "../types";
 
 export default function SortableItem({
   disabled,
@@ -17,10 +15,11 @@ export default function SortableItem({
   useDragOverlay,
   wrapperStyle,
 }: SortableItemProps) {
-
- 
+  
+  // Get id from itemData
   const { id } = itemData;
 
+  // Get props from useSortable
   const {
     active,
     attributes,
@@ -36,10 +35,8 @@ export default function SortableItem({
     id,
     animateLayoutChanges,
     disabled,
-    getNewIndex
+    getNewIndex,
   });
-
-
 
   return (
     <Item
