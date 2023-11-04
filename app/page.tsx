@@ -3,7 +3,7 @@ import ProductsShowcase from "@/components/products-gallery";
 
 const Page = () => {
   return (
-    <main className="container mx-auto min-h-screen py-10">
+    <main className="container mx-auto min-h-screen pt-10 pb-20">
       <ProductsShowcase />
     </main>
   );
