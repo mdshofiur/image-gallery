@@ -95,7 +95,7 @@ export interface SortableItemProps {
   animateLayoutChanges?: AnimateLayoutChanges;
   disabled?: boolean;
   getNewIndex?: NewIndexGetter;
-  id: any;
+  itemData:any;
   index: number;
   handle: boolean;
   useDragOverlay?: boolean;

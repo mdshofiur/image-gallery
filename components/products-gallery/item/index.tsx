@@ -44,7 +44,7 @@ const Item = React.memo(
         };
       }, [dragOverlay]);
 
-      // Context API
+      //  Product Context
       const { selectedCheckboxes, toggleCheckbox } = useProductContext();
 
       return renderItem ? (
@@ -108,11 +108,13 @@ const Item = React.memo(
           >
             <div className="w-full h-full border border-red-500 bg-white rounded-md relative group">
               <Image
+                src={`${value?.image}`}
+                alt={`${value?.name} Image`}
                 width={200}
                 height={200}
+                priority={true}
+                unoptimized={true}
                 className="w-full h-full object-cover object-center rounded-md"
-                alt="image"
-                src={`${value?.image}`}
               />
               {!dragging && !dragOverlay && (
                 <div

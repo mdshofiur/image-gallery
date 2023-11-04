@@ -6,7 +6,7 @@ import { GridContainer } from "./grid/GridContainer";
 import { Props as SortableProps } from "./types";
 import { useProductContext } from "../context/product-provider";
 
-
+// Initial Props
 const props: Partial<SortableProps> = {
   adjustScale: true,
   Container: (props: any) => <GridContainer {...props} columns={5} />,
@@ -15,28 +15,37 @@ const props: Partial<SortableProps> = {
 };
 
 export default function ProductsShowcase() {
-  const { products, handleDeleteSelected } = useProductContext();
 
-  const [isClient, setIsClient] = useState(false)
- 
+  //  Product Context
+  const { products, handleDeleteSelected, selectedCheckboxes } =
+    useProductContext();
+
+  // Declare State For Hydration mismatch
+  const [isClient, setIsClient] = useState(false);
+
+  // Fix Hydration mismatch
   useEffect(() => {
-    setIsClient(true)
-  }, [])
+    setIsClient(true);
+  }, []);
 
   return (
     <Fragment>
       {/* Header here */}
-      <section className="flex items-center justify-between py-10">
-        <h3 className="text-3xl font-bold">Products</h3>
+      <section className="flex items-center justify-between pb-10">
+        <h3 className="text-2xl font-bold capitalize">
+          {selectedCheckboxes.length > 0
+            ? `${selectedCheckboxes.length} Files Selected`
+            : "Gallery"}
+        </h3>
         <button
           className="px-3 py-2 text-sm text-white bg-red-500 rounded hover:bg-opacity-60 transition-all"
           onClick={handleDeleteSelected}
         >
-          Delete
+          Delete Files
         </button>
       </section>
       {/* Sortable  */}
-      {isClient  ? (
+      {isClient ? (
         <Sortable
           {...props}
           dataItems={products}

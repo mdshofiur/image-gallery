@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import productsData from "../products-gallery/data/products.json";
+import productsData from "../data/products.json";
 import {
   ProductContextType,
   Product,

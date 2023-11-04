@@ -20,10 +20,9 @@ import {
 import { List } from "../list";
 import { Wrapper } from "../wrapper";
 import Item from "../item";
-import  SortableItem  from "../sortable-item";
+import SortableItem from "../sortable-item";
 import { Props } from "../types";
 import { dropAnimationConfig, screenReaderInstructions } from "../others";
-
 
 export default function Sortable({
   animateLayoutChanges,
@@ -46,11 +45,14 @@ export default function Sortable({
   useDragOverlay = true,
   wrapperStyle = () => ({}),
 }: Props) {
+
+  // Initial state
   const [items, setItems] = useState<UniqueIdentifier[]>(initialItems);
+
+  // Active id Store
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
 
-
-
+  // Sensors
   const sensors = useSensors(
     useSensor(MouseSensor, {
       activationConstraint: {
@@ -66,13 +68,16 @@ export default function Sortable({
 
   const isFirstAnnouncement = useRef(true);
 
+  // Determine the index
   const getIndex = (id: UniqueIdentifier) => {
     const foundItem = items.find((item: any) => item.id === id);
     return foundItem ? items.indexOf(foundItem) : -1;
   };
 
+  // Determine the position
   const getPosition = (id: UniqueIdentifier) => getIndex(id) + 1;
 
+  // Determine the active index
   const activeIndex = activeId ? getIndex(activeId) : -1;
 
   // Handle removal of items
@@ -121,13 +126,15 @@ export default function Sortable({
     },
   };
 
+  // Reset the first announcement
   useEffect(() => {
     if (!activeId) {
       isFirstAnnouncement.current = true;
     }
   }, [activeId]);
 
-    useEffect(() => {
+  // Reset the items
+  useEffect(() => {
     setItems(initialItems);
   }, [initialItems]);
 
@@ -165,7 +172,7 @@ export default function Sortable({
             {items.map((value, index) => (
               <SortableItem
                 key={index}
-                id={value}
+                itemData={value}
                 handle={handle}
                 index={index}
                 style={getItemStyles}

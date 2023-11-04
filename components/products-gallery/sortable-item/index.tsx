@@ -1,4 +1,3 @@
-
 import {
   useSortable
 } from "@dnd-kit/sortable";
@@ -10,7 +9,7 @@ export default function SortableItem({
   animateLayoutChanges,
   getNewIndex,
   handle,
-  id:data,
+  itemData,
   index,
   onRemove,
   style,
@@ -20,7 +19,7 @@ export default function SortableItem({
 }: SortableItemProps) {
 
  
-  const { id } = data;
+  const { id } = itemData;
 
   const {
     active,
@@ -45,7 +44,7 @@ export default function SortableItem({
   return (
     <Item
       ref={setNodeRef}
-      value={data}
+      value={itemData}
       disabled={disabled}
       dragging={isDragging}
       sorting={isSorting}
