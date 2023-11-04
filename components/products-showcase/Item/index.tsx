@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 import styles from "./Item.module.css";
 import Image from "next/image";
 import { ItemProps } from "../types";
+import { useProductContext } from "@/components/context/product-provider";
 
 const Item = React.memo(
   React.forwardRef<HTMLLIElement, ItemProps>(
@@ -42,6 +43,9 @@ const Item = React.memo(
           document.body.style.cursor = "";
         };
       }, [dragOverlay]);
+
+      // Context API
+      const { selectedCheckboxes, toggleCheckbox } = useProductContext();
 
       return renderItem ? (
         renderItem({
@@ -102,14 +106,29 @@ const Item = React.memo(
             {...props}
             tabIndex={!handle ? 0 : undefined}
           >
-            <div className="w-full h-full border border-red-500 bg-white rounded-md">
+            <div className="w-full h-full border border-red-500 bg-white rounded-md relative group">
               <Image
+                width={200}
+                height={200}
+                className="w-full h-full object-cover object-center rounded-md"
+                alt="image"
                 src={`${value?.image}`}
-                className="object-cover object-center rounded-md"
-                alt="Picture of the author"
-                width={500}
-                height={500}
               />
+              {!dragging && !dragOverlay && (
+                <div
+                  className={`absolute left-0 right-0 top-0
+                  bottom-0 invisible bg-custom opacity-0
+                  group-hover:visible group-hover:opacity-100 
+                  transition-opacity duration-500 ease-in-out `}
+                >
+                  <input
+                    type="checkbox"
+                    className="w-5 h-5 ml-5 mt-5"
+                    checked={selectedCheckboxes.includes(value.id)}
+                    onChange={() => toggleCheckbox(value.id)}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </li>

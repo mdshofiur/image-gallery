@@ -19,14 +19,12 @@ import {
 } from "@dnd-kit/sortable";
 import { List } from "../List";
 import { Wrapper } from "../Wrapper";
-import { createRange } from "../../utilities/createRange";
 import Item from "../Item";
 import { SortableItem } from "../SortableItem";
 import { Props } from "../types";
 import { dropAnimationConfig, screenReaderInstructions } from "../others";
 
 export default function Sortable({
-  activationConstraint,
   animateLayoutChanges,
   adjustScale = false,
   Container = List,
@@ -48,19 +46,21 @@ export default function Sortable({
   useDragOverlay = true,
   wrapperStyle = () => ({}),
 }: Props) {
-  const [items, setItems] = useState<UniqueIdentifier[]>(
-    () =>
-      initialItems ??
-      createRange<UniqueIdentifier>(itemCount, (index: number) => index + 1)
-  );
+  const [items, setItems] = useState<UniqueIdentifier[]>(initialItems);
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
+
+
 
   const sensors = useSensors(
     useSensor(MouseSensor, {
-      activationConstraint,
+      activationConstraint: {
+        distance: 10,
+      },
     }),
     useSensor(TouchSensor, {
-      activationConstraint,
+      activationConstraint: {
+        distance: 10,
+      },
     })
   );
 
@@ -77,8 +77,9 @@ export default function Sortable({
 
   // Handle removal of items
   const handleRemove = removable
-    ? (id: UniqueIdentifier) =>
-        setItems((items) => items.filter((item: any) => item.id !== id))
+    ? (id: UniqueIdentifier) => {
+        setItems((items) => items.filter((item: any) => item.id !== id));
+      }
     : undefined;
 
   // Announcement messages
@@ -125,6 +126,10 @@ export default function Sortable({
       isFirstAnnouncement.current = true;
     }
   }, [activeId]);
+
+    useEffect(() => {
+    setItems(initialItems);
+  }, [initialItems]);
 
   return (
     <DndContext
