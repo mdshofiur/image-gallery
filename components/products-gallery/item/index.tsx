@@ -1,10 +1,10 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import classNames from "classnames";
 import styles from "./Item.module.css";
 import Image from "next/image";
 import { ItemProps } from "../types";
-import { useProductContext } from "@/components/context/product-provider";
+import { useProductContext } from "@/context/product-provider";
 
 const Item = React.memo(
   React.forwardRef<HTMLDivElement, ItemProps>(

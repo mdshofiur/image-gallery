@@ -45,7 +45,6 @@ export default function Sortable({
   useDragOverlay = true,
   wrapperStyle = () => ({}),
 }: Props) {
-
   // Initial state
   const [items, setItems] = useState<UniqueIdentifier[]>(initialItems);
 
@@ -185,6 +184,7 @@ export default function Sortable({
                 getNewIndex={getNewIndex}
               />
             ))}
+          
           </Container>
         </SortableContext>
       </Wrapper>

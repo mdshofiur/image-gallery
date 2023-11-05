@@ -4,7 +4,7 @@ import { rectSortingStrategy } from "@dnd-kit/sortable";
 import Sortable from "./sortable";
 import { GridContainer } from "./grid/GridContainer";
 import { Props as SortableProps } from "./types";
-import { useProductContext } from "../context/product-provider";
+import { useProductContext } from "../../context/product-provider";
 
 // Initial Props
 const props: Partial<SortableProps> = {

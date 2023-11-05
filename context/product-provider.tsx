@@ -1,12 +1,13 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import productsData from "../data/products.json";
+import React, { createContext, useContext, useState } from "react";
+import productsData from "../components/data/products.json";
 import {
   ProductContextType,
   Product,
   ProductProviderProps,
-} from "../products-gallery/types";
+} from "../components/products-gallery/types";
+
 
 // Create a context to manage products and selected checkboxes
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -66,7 +67,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
         deleteProduct,
         selectedCheckboxes,
         toggleCheckbox,
-        handleDeleteSelected,
+        handleDeleteSelected
       }}
     >
       {children}
