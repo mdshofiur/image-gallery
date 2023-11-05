@@ -125,8 +125,8 @@ const Item = React.memo(
                   group-hover:opacity-100 transition-opacity rounded-xl duration-500 ease-in-out 
                    ${
                      selectedCheckboxes.includes(value.id)
-                       ? "bg-custom visible opacity-100"
-                       : "bg-custom invisible opacity-0"
+                       ? "bg-selected visible opacity-100"
+                       : "bg-overlay invisible opacity-0"
                    }`}
                 >
                   <input
