@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ItemProps } from "../types";
 import { useProductContext } from "@/context/product-provider";
 
+
 const Item = React.memo(
   React.forwardRef<HTMLDivElement, ItemProps>(
     (
@@ -32,7 +33,9 @@ const Item = React.memo(
       },
       ref
     ) => {
-      // Drag Overlay Effect
+       /* -------------------------------------------------------------------------- */
+       /*                             Drag Overlay Effect                            */
+       /* -------------------------------------------------------------------------- */
       useEffect(() => {
         if (!dragOverlay) {
           return;
@@ -45,7 +48,9 @@ const Item = React.memo(
         };
       }, [dragOverlay]);
 
-      //  Product Context
+       /* -------------------------------------------------------------------------- */
+       /*                               Product Context                              */
+       /* -------------------------------------------------------------------------- */
       const { selectedCheckboxes, toggleCheckbox } = useProductContext();
 
       return renderItem ? (

@@ -18,7 +18,9 @@ import {
 } from "@dnd-kit/sortable";
 import type { Transform } from "@dnd-kit/utilities";
 
-// Props for the sortable list container component
+/* -------------------------------------------------------------------------- */
+/*               Props for the sortable list container component              */
+/* -------------------------------------------------------------------------- */
 export interface Props {
   activationConstraint?: PointerActivationConstraint;
   animateLayoutChanges?: AnimateLayoutChanges;
@@ -56,7 +58,9 @@ export interface Props {
   isDisabled?(id: UniqueIdentifier): boolean;
 }
 
-// Props for individual items within the sortable list
+ /* -------------------------------------------------------------------------- */
+ /*             Props for individual items within the sortable list            */
+ /* -------------------------------------------------------------------------- */
 export interface ItemProps {
   dragOverlay?: boolean;
   color?: string;
@@ -90,7 +94,9 @@ export interface ItemProps {
   }): React.ReactElement;
 }
 
-// Props for individual sortable items
+/* -------------------------------------------------------------------------- */
+/*                     Props for individual sortable items                    */
+/* -------------------------------------------------------------------------- */
 export interface SortableItemProps {
   animateLayoutChanges?: AnimateLayoutChanges;
   disabled?: boolean;
@@ -105,19 +111,25 @@ export interface SortableItemProps {
   wrapperStyle: Props["wrapperStyle"];
 }
 
-// Props for a grid container component
+/* -------------------------------------------------------------------------- */
+/*                    Props for a grid container component                    */
+/* -------------------------------------------------------------------------- */
 export interface GridContainerProps {
   children: React.ReactNode;
   columns: number;
 }
 
-// Props for a wrapper component
+/* -------------------------------------------------------------------------- */
+/*                        Props for a wrapper component                       */
+/* -------------------------------------------------------------------------- */
 export interface WrapperProps {
   children: React.ReactNode;
   style?: React.CSSProperties;
 }
 
-// Props for a list container component
+/* -------------------------------------------------------------------------- */
+/*                    Props for a list container component                    */
+/* -------------------------------------------------------------------------- */
 export interface ListProps {
   children: React.ReactNode;
   columns?: number;
@@ -126,20 +138,26 @@ export interface ListProps {
 }
 
 
-// Props for the ProductProvider component
+/* -------------------------------------------------------------------------- */
+/*                   Props for the ProductProvider component                  */
+/* -------------------------------------------------------------------------- */
 export interface ProductProviderProps {
   children: ReactNode;
 }
 
 
-// Represents a product with an ID, name, and image
+ /* -------------------------------------------------------------------------- */
+ /*              Represents a product with an ID, name, and image              */
+ /* -------------------------------------------------------------------------- */
 export interface Product {
   id: number;
   name: string;
   image: string;
 }
 
-// Context for managing a list of products and selected checkboxes
+/* -------------------------------------------------------------------------- */
+/*       Context for managing a list of products and selected checkboxes      */
+/* -------------------------------------------------------------------------- */
 export interface ProductContextType {
   products: Product[];
   deleteProduct: (productId: number) => void;

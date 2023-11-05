@@ -4,7 +4,9 @@ import {
   defaultDropAnimationSideEffects,
 } from "@dnd-kit/core";
 
-// Drop Animation
+/* -------------------------------------------------------------------------- */
+/*                               Drop Animation                               */
+/* -------------------------------------------------------------------------- */
 export const dropAnimationConfig: DropAnimation = {
   sideEffects: defaultDropAnimationSideEffects({
     styles: {
@@ -15,7 +17,9 @@ export const dropAnimationConfig: DropAnimation = {
   }),
 };
 
-// Screen Reader Instructions
+/* -------------------------------------------------------------------------- */
+/*                         Screen Reader Instructions                         */
+/* -------------------------------------------------------------------------- */
 export const screenReaderInstructions: ScreenReaderInstructions = {
   draggable: `
       To pick up a sortable item, press the space bar.

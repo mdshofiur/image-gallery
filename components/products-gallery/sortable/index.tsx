@@ -45,13 +45,19 @@ export default function Sortable({
   useDragOverlay = true,
   wrapperStyle = () => ({}),
 }: Props) {
-  // Initial state
+  /* -------------------------------------------------------------------------- */
+  /*                                Initial state                               */
+  /* -------------------------------------------------------------------------- */
   const [items, setItems] = useState<UniqueIdentifier[]>(initialItems);
 
-  // Active id Store
+  /* -------------------------------------------------------------------------- */
+  /*                               Active id Store                              */
+  /* -------------------------------------------------------------------------- */
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
 
-  // Sensors
+  /* -------------------------------------------------------------------------- */
+  /*                                   Sensors                                  */
+  /* -------------------------------------------------------------------------- */
   const sensors = useSensors(
     useSensor(MouseSensor, {
       activationConstraint: {
@@ -65,28 +71,41 @@ export default function Sortable({
     })
   );
 
+  /* -------------------------------------------------------------------------- */
+  /*                             First announcement                             */
+  /* -------------------------------------------------------------------------- */
   const isFirstAnnouncement = useRef(true);
 
-  // Determine the index
+  /* -------------------------------------------------------------------------- */
+  /*                             Determine the index                            */
+  /* -------------------------------------------------------------------------- */
   const getIndex = (id: UniqueIdentifier) => {
     const foundItem = items.find((item: any) => item.id === id);
     return foundItem ? items.indexOf(foundItem) : -1;
   };
 
-  // Determine the position
+  /* -------------------------------------------------------------------------- */
+  /*                           Determine the position                           */
+  /* -------------------------------------------------------------------------- */
   const getPosition = (id: UniqueIdentifier) => getIndex(id) + 1;
 
-  // Determine the active index
+  /* -------------------------------------------------------------------------- */
+  /*                         Determine the active index                         */
+  /* -------------------------------------------------------------------------- */
   const activeIndex = activeId ? getIndex(activeId) : -1;
 
-  // Handle removal of items
+  /* -------------------------------------------------------------------------- */
+  /*                           Handle removal of items                          */
+  /* -------------------------------------------------------------------------- */
   const handleRemove = removable
     ? (id: UniqueIdentifier) => {
         setItems((items) => items.filter((item: any) => item.id !== id));
       }
     : undefined;
 
-  // Announcement messages
+  /* -------------------------------------------------------------------------- */
+  /*                            Announcement messages                           */
+  /* -------------------------------------------------------------------------- */
   const announcements: Announcements = {
     onDragStart({ active: { id } }) {
       return `Picked up sortable item ${String(
@@ -125,14 +144,18 @@ export default function Sortable({
     },
   };
 
-  // Reset the first announcement
+  /* -------------------------------------------------------------------------- */
+  /*                        Reset the first announcement                        */
+  /* -------------------------------------------------------------------------- */
   useEffect(() => {
     if (!activeId) {
       isFirstAnnouncement.current = true;
     }
   }, [activeId]);
 
-  // Reset the items
+  /* -------------------------------------------------------------------------- */
+  /*                               Reset the items                              */
+  /* -------------------------------------------------------------------------- */
   useEffect(() => {
     setItems(initialItems);
   }, [initialItems]);
@@ -184,7 +207,6 @@ export default function Sortable({
                 getNewIndex={getNewIndex}
               />
             ))}
-          
           </Container>
         </SortableContext>
       </Wrapper>

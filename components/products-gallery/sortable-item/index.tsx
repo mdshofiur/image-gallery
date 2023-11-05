@@ -16,10 +16,14 @@ export default function SortableItem({
   wrapperStyle,
 }: SortableItemProps) {
   
-  // Get id from itemData
+   /* -------------------------------------------------------------------------- */
+   /*                            Get id from item data                           */
+   /* -------------------------------------------------------------------------- */
   const { id } = itemData;
 
-  // Get props from useSortable
+   /* -------------------------------------------------------------------------- */
+   /*                         Get props from useSortable                         */
+   /* -------------------------------------------------------------------------- */
   const {
     active,
     attributes,

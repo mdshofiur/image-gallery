@@ -5,8 +5,11 @@ import Sortable from "./sortable";
 import { GridContainer } from "./grid/GridContainer";
 import { Props as SortableProps } from "./types";
 import { useProductContext } from "../../context/product-provider";
+import {HeaderContents} from "./header-contents";
 
-// Initial Props
+/* -------------------------------------------------------------------------- */
+/*                                Initial Props                               */
+/* -------------------------------------------------------------------------- */
 const props: Partial<SortableProps> = {
   adjustScale: true,
   Container: (props: any) => <GridContainer {...props} columns={5} />,
@@ -15,35 +18,28 @@ const props: Partial<SortableProps> = {
 };
 
 export default function ProductsShowcase() {
-  //  Product Context
-  const { products, handleDeleteSelected, selectedCheckboxes } =
-    useProductContext();
+  /* -------------------------------------------------------------------------- */
+  /*                               Product Context                              */
+  /* -------------------------------------------------------------------------- */
+  const { products } = useProductContext();
 
-  // Declare State For Hydration mismatch
+  /* -------------------------------------------------------------------------- */
+  /*                      Declare State For Hydration mismatch                  */
+  /* -------------------------------------------------------------------------- */
   const [isClient, setIsClient] = useState(false);
 
-  // Fix Hydration mismatch
+  /* -------------------------------------------------------------------------- */
+  /*                           Fix Hydration mismatch                           */
+  /* -------------------------------------------------------------------------- */
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   return (
     <Fragment>
-      {/* Page header here */}
-      <section className="flex items-center justify-between pb-10">
-        <h3 className="text-xl md:text-2xl font-bold capitalize">
-          {selectedCheckboxes.length > 0
-            ? `${selectedCheckboxes.length} Files Selected`
-            : "Gallery"}
-        </h3>
-        <button
-          className="px-3 py-2 text-sm text-white bg-red-500 rounded hover:bg-opacity-60 transition-all"
-          onClick={handleDeleteSelected}
-        >
-          Delete files
-        </button>
-      </section>
-      {/* Sortable  */}
+      {/* Page Header Component */}
+      <HeaderContents />
+      {/* Sortable Component  */}
       {isClient ? (
         <Sortable
           {...props}

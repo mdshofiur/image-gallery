@@ -2,6 +2,10 @@ import React from 'react';
 import styles from './GridContainer.module.css';
 import { GridContainerProps } from '../types';
 
+
+/* -------------------------------------------------------------------------- */
+/*                               Grid Container                               */
+/* -------------------------------------------------------------------------- */
 export function GridContainer({children, columns}: GridContainerProps) {
   return (
     <div
